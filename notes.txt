@@ -1,0 +1,7 @@
+Walking through the tutorial at https://mathspp.com/blog/neural-networks-fundamentals-with-python-intro
+
+matplotlib note:
+Simple scatter plots can me made by calling matplotlib.pyplot.plot(xdata, ydata)
+Plot
+When plotting, if no GUI renderer is available use plot.savefig(path)
+and view the saved image.
