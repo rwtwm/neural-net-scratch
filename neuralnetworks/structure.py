@@ -21,3 +21,9 @@ def get_scaled_normal(nrows, ncols=1):
 # As a function, it moves -ve values closer to 0 and leaves =ve vals unchaged.
 def leaky_relu(x, leaky_param=0.1):
     return np.maximum(x, x * leaky_param)
+
+
+# First loss function. Used for training the network.
+# The np.mean method only works on np.array objects.
+def mean_squared_error(values, expected):
+    return np.mean((values - expected)**2)

@@ -4,9 +4,10 @@ import structure as stc
 
 class NeuralNetwork:
     '''A series of connected layers'''
-    def __init__(self, layers: list[Layer]):
+    def __init__(self, layers: list[Layer], input=None, loss_func=None):
         self._layers = layers
-        self._input = None
+        self._input = input
+        self._loss = loss_func
 
         # Check the layers are compatible
         # Dual iteration. Zip the results of two iterators in a tuple
@@ -20,8 +21,13 @@ class NeuralNetwork:
         input_size = self._layers[0].ins
         if x is None:
             x = stc.get_scaled_normal(input_size)
-
         self._input = x
+
+    def add_loss(self, loss_function):
+        self._loss = loss_function
+
+    def run_loss(self, values, expected):
+        return self._loss(values, expected)
 
     def forward_propagate(self):
         '''Combines the forward passes of all of the layers in the network.'''
